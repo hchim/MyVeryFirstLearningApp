@@ -1,0 +1,9 @@
+{
+  "expo": {
+    "sdkVersion": "26.0.0",
+    "name": "My Very First Learning App",
+    "slug": "my-very-first-learning-app",
+    "privacy": "public",
+    "version": "0.1.0"
+  }
+}
