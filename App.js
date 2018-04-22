@@ -1,31 +1,18 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { Constants } from 'expo';
-import { createStore } from 'redux';
-import reducers from './reducers';
+import { createStore, applyMiddleware } from 'redux';
+import AppReducer from './reducers';
 import { Provider } from 'react-redux';
+import AppNavigator from './containers/AppNavigator';
+import { middleware } from './utils/redux';
 
-let store = createStore(reducers)
+let store = createStore(AppReducer, applyMiddleware(middleware));
 
 export default class App extends React.Component {
     render() {
         return (
             <Provider store={store}>
-                <View style={styles.container}>
-                    <Text>Home</Text>
-                </View>
+                <AppNavigator />
             </Provider>
         );
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'flex-start',
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        flexDirection: 'column',
-        marginTop: Constants.statusBarHeight
-    }
-});
