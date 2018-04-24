@@ -5,8 +5,10 @@ import HeaderButtons from 'react-navigation-header-buttons';
 import { DrawerActions } from 'react-navigation';
 import CategoryButton from '../home/CategoryButton';
 import Categories from '../../common/Categories';
-import PropTypes from 'prop-types';
+import {responsive} from "react-native-responsive-ui";
+import { PORTRAIT, LANDSCAPE, getOrientation } from '../../utils/OrientationUtil';
 
+@responsive
 class HomeScreen extends React.Component {
     static navigationOptions = ({navigation}) => {
         return {
@@ -23,8 +25,11 @@ class HomeScreen extends React.Component {
     };
 
     render() {
+        const {width, height} = this.props.window;
+        const orientation = getOrientation(width, height);
+
         const rows = []
-        const colNum = this.props.columnCount | 2;
+        const colNum = orientation == PORTRAIT ? 2 : 3;
         const rowNum = Math.floor(Categories.length / colNum);
 
         for (let i = 0; i < rowNum; i++) {
@@ -49,10 +54,6 @@ class HomeScreen extends React.Component {
             </View>
         );
     }
-}
-
-HomeScreen.propTypes = {
-    columnCount: PropTypes.oneOf([2, 3])
 }
 
 const styles = StyleSheet.create({

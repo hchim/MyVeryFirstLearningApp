@@ -28,6 +28,7 @@
     "redux-thunk": "^2.2.0",
     "react-navigation": "^2.0.0-rc.3",
     "react-navigation-redux-helpers": "^1.0.5",
-    "react-navigation-header-buttons": "^0.0.7"
+    "react-navigation-header-buttons": "^0.0.7",
+    "react-native-responsive-ui": "^1.1.1"
   }
 }

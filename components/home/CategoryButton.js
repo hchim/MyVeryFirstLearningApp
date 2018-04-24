@@ -2,8 +2,6 @@ import React from 'react';
 import { StyleSheet, TouchableHighlight, Text, Image, View, Dimensions } from 'react-native';
 import PropTypes from 'prop-types'
 
-const winSize = Dimensions.get('window');
-
 export default class CategoryButton extends React.Component {
     render() {
         return (
