@@ -3,6 +3,9 @@ import { StyleSheet, View, Text } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import HeaderButtons from 'react-navigation-header-buttons';
 import { DrawerActions } from 'react-navigation';
+import CategoryButton from '../home/CategoryButton';
+import Categories from '../../common/Categories';
+import PropTypes from 'prop-types';
 
 class HomeScreen extends React.Component {
     static navigationOptions = ({navigation}) => {
@@ -20,12 +23,36 @@ class HomeScreen extends React.Component {
     };
 
     render() {
+        const rows = []
+        const colNum = this.props.columnCount | 2;
+        const rowNum = Math.floor(Categories.length / colNum);
+
+        for (let i = 0; i < rowNum; i++) {
+            const cols = []
+            for (let j = 0; j < colNum; j++) {
+                let cat = Categories[i * colNum + j]
+                cols.push(
+                    <CategoryButton key={j.toString()} text={cat.name} icon={cat.icon} onClick={() => {}}/>
+                )
+            }
+
+            rows.push(
+                <View key={i.toString()} style={styles.row}>
+                    {cols}
+                </View>
+            )
+        }
+
         return (
             <View style={styles.homeContainer}>
-                <Text>Home</Text>
+                {rows}
             </View>
         );
     }
+}
+
+HomeScreen.propTypes = {
+    columnCount: PropTypes.oneOf([2, 3])
 }
 
 const styles = StyleSheet.create({
@@ -33,8 +60,11 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'flex-start',
         flexDirection: 'column',
-        paddingLeft: 20,
-        paddingRight: 20
+        backgroundColor: 'white'
+    },
+    row: {
+        flexDirection: 'row',
+        marginTop: 10
     }
 });
 
