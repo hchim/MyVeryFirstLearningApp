@@ -5,11 +5,10 @@ import HeaderButtons from 'react-navigation-header-buttons';
 import { DrawerActions } from 'react-navigation';
 import CategoryButton from '../home/CategoryButton';
 import Categories from '../../common/Categories';
-import {responsive} from "react-native-responsive-ui";
-import { PORTRAIT, LANDSCAPE, getOrientation } from '../../utils/OrientationUtil';
+import ResponsiveComponent from '../ResponsiveComponent';
+import Platform from '../../utils/Platform';
 
-@responsive
-class HomeScreen extends React.Component {
+class HomeScreen extends ResponsiveComponent {
     static navigationOptions = ({navigation}) => {
         return {
             title: 'Home',
@@ -24,12 +23,13 @@ class HomeScreen extends React.Component {
         }
     };
 
-    render() {
-        const {width, height} = this.props.window;
-        const orientation = getOrientation(width, height);
+    constructor() {
+        super();
+    }
 
+    render() {
         const rows = []
-        const colNum = orientation == PORTRAIT ? 2 : 3;
+        const colNum = this.state.orientation == Platform.PORTRAIT ? 2 : 3;
         const rowNum = Math.floor(Categories.length / colNum);
 
         for (let i = 0; i < rowNum; i++) {
