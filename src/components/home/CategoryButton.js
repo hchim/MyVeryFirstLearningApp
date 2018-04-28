@@ -4,24 +4,42 @@ import PropTypes from 'prop-types'
 
 export default class CategoryButton extends React.Component {
     render() {
-        return (
-            <TouchableHighlight style={styles.touchableBtn} underlayColor={'#ddd'} onPress={this.props.onClick}>
-                <View style={styles.button}>
-                    <Image source={this.props.icon} style={styles.image} />
-                    <Text style={styles.text}>{this.props.text}</Text>
-                </View>
-            </TouchableHighlight>
-        );
+        let view;
+        if (this.props.visible) {
+            view = (
+                <TouchableHighlight style={styles.touchableBtn} underlayColor={'#ddd'} onPress={this.props.onClick}>
+                    <View style={styles.button}>
+                        <Image source={this.props.icon} style={styles.image} />
+                        <Text style={styles.text}>{this.props.text}</Text>
+                    </View>
+                </TouchableHighlight>
+            );
+        } else {
+            view = (<View style={styles.space} />);
+        }
+
+        return view;
     }
 }
+
+CategoryButton.defaultProps = {
+    text: '',
+    visible: true
+};
 
 CategoryButton.propTypes = {
     text: PropTypes.string.isRequired,
     icon: PropTypes.number.isRequired,
-    onClick: PropTypes.func.isRequired
+    onClick: PropTypes.func.isRequired,
+    visible: PropTypes.bool.isRequired
 }
 
 const styles = StyleSheet.create({
+    space: {
+        flex: 1,
+        marginLeft: 10,
+        marginRight: 10
+    },
     touchableBtn: {
         flex: 1,
         marginLeft: 10,

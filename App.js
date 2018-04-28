@@ -1,9 +1,9 @@
 import React from 'react';
 import { createStore, applyMiddleware } from 'redux';
-import AppReducer from './reducers';
+import AppReducer from './src/reducers';
 import { Provider } from 'react-redux';
-import AppNavigator from './containers/AppNavigator';
-import { middleware } from './utils/redux';
+import AppWithNavigationState from './src/components/navigators/AppWithNavigationState';
+import { middleware } from './src/utils/redux';
 
 let store = createStore(AppReducer, applyMiddleware(middleware));
 
@@ -11,7 +11,7 @@ export default class App extends React.Component {
     render() {
         return (
             <Provider store={store}>
-                <AppNavigator />
+                <AppWithNavigationState />
             </Provider>
         );
     }
