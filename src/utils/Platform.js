@@ -1,12 +1,12 @@
-import { Dimensions } from "react-native";
+import { Dimensions } from 'react-native';
 
 // orientation
-const PORTRAIT = "portrait";
-const LANDSCAPE = "landscape";
+const PORTRAIT = 'portrait';
+const LANDSCAPE = 'landscape';
 
 // device type
-const TABLET = "tablet";
-const PHONE = "phone";
+const TABLET = 'tablet';
+const PHONE = 'phone';
 
 /**
  *
@@ -21,7 +21,7 @@ const msp = (dim, limit) => {
  * Returns true if the screen is in portrait mode
  */
 const isPortrait = () => {
-    const dim = Dimensions.get("screen");
+    const dim = Dimensions.get('screen');
     return dim.height >= dim.width;
 };
 
@@ -29,7 +29,7 @@ const isPortrait = () => {
  * Returns true of the screen is in landscape mode
  */
 const isLandscape = () => {
-    const dim = Dimensions.get("screen");
+    const dim = Dimensions.get('screen');
     return dim.width >= dim.height;
 };
 
@@ -39,20 +39,22 @@ const isLandscape = () => {
  */
 const getOrientation = () => {
     return isPortrait() ? PORTRAIT : LANDSCAPE;
-}
+};
 
 /**
  * Returns true if the device is a tablet
  */
 const isTablet = () => {
-    const dim = Dimensions.get("screen");
+    const dim = Dimensions.get('screen');
     return ((dim.scale < 2 && msp(dim, 1000)) || (dim.scale >= 2 && msp(dim, 1900)));
 };
 
 /**
  * Returns true if the device is a phone
  */
-const isPhone = () => { return !isTablet(); }
+const isPhone = () => {
+    return !isTablet();
+};
 
 /**
  * Get device type
@@ -60,7 +62,7 @@ const isPhone = () => { return !isTablet(); }
  */
 const getDeviceType = () => {
     return isTablet() ? TABLET : PHONE;
-}
+};
 
 export default {
     PORTRAIT,
@@ -70,5 +72,5 @@ export default {
     getOrientation,
     isTablet,
     isPhone,
-    getDeviceType
+    getDeviceType,
 };
