@@ -48,6 +48,46 @@ const Categories = [
         name: "Transportation",
         icon: require('../../images/icons/People.jpg')
     },
+    {
+        name: "Foods",
+        icon: require('../../images/icons/People.jpg')
+    },
+    {
+        name: "Numbers",
+        icon: require('../../images/icons/People.jpg')
+    },
+    {
+        name: "Alphabets",
+        icon: require('../../images/icons/People.jpg')
+    },
+    {
+        name: "Colors",
+        icon: require('../../images/icons/People.jpg')
+    },
+    {
+        name: "Transportation",
+        icon: require('../../images/icons/People.jpg')
+    },
+    {
+        name: "Foods",
+        icon: require('../../images/icons/People.jpg')
+    },
+    {
+        name: "Numbers",
+        icon: require('../../images/icons/People.jpg')
+    },
+    {
+        name: "Alphabets",
+        icon: require('../../images/icons/People.jpg')
+    },
+    {
+        name: "Colors",
+        icon: require('../../images/icons/People.jpg')
+    },
+    {
+        name: "Transportation",
+        icon: require('../../images/icons/People.jpg')
+    },
 ]
 
 export default Categories;

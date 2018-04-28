@@ -3,18 +3,14 @@ import { StyleSheet, View, Text } from 'react-native';
 import ResponsiveComponent from '../ResponsiveComponent';
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types';
-import { HeaderBackButton, NavigationActions } from 'react-navigation';
+import {createBackHeaderButton} from '../CommonJSX';
 
 class SingleScreen extends ResponsiveComponent {
     static navigationOptions = ({navigation}) => {
         const title = navigation.state.params.category.name;
         return {
             title: title,
-            headerLeft: (
-                <HeaderBackButton tintColor='#fff'
-                                  onPress={() => navigation.dispatch(NavigationActions.back())}
-                />
-            )
+            headerLeft: createBackHeaderButton(navigation)
         }
     };
 

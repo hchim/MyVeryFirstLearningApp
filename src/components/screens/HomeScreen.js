@@ -1,29 +1,22 @@
 import React from 'react';
-import { StyleSheet, View, Text, TouchableHighlight } from 'react-native';
+import { StyleSheet, View, ScrollView } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import HeaderButtons from 'react-navigation-header-buttons';
-import { DrawerActions } from 'react-navigation';
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types';
+
 import CategoryButton from '../home/CategoryButton';
 import Categories from '../../common/Categories';
 import Platform from '../../utils/Platform';
 import SubCategoryModal from "../modals/SubCategoryModal";
 import ResponsiveComponent from '../ResponsiveComponent';
-import { connect } from 'react-redux'
 import { selectCategory } from '../../actions';
-import PropTypes from 'prop-types';
+import {createDrawerHeaderButton} from '../CommonJSX';
 
 class HomeScreen extends ResponsiveComponent {
     static navigationOptions = ({navigation}) => {
         return {
             title: 'Home',
-            headerLeft: (
-                <HeaderButtons IconComponent={Ionicons} iconSize={24} color="#fff">
-                    <HeaderButtons.Item
-                        title="Home_Nav"
-                        iconName="ios-menu-outline"
-                        onPress={() => navigation.dispatch(DrawerActions.openDrawer())} />
-                </HeaderButtons>
-            )
+            headerLeft: createDrawerHeaderButton(navigation)
         }
     };
 
@@ -63,10 +56,12 @@ class HomeScreen extends ResponsiveComponent {
         }
 
         return (
-            <View style={styles.homeContainer}>
-                {rows}
-                <SubCategoryModal />
-            </View>
+            <ScrollView style={styles.scrollView}>
+                <View style={styles.homeContainer}>
+                    {rows}
+                    <SubCategoryModal />
+                </View>
+            </ScrollView>
         );
     }
 }
@@ -76,11 +71,15 @@ HomeScreen.propTypes = {
 }
 
 const styles = StyleSheet.create({
+    scrollView: {
+        flex: 1
+    },
     homeContainer: {
         flex: 1,
         justifyContent: 'flex-start',
         flexDirection: 'column',
-        backgroundColor: 'white'
+        backgroundColor: 'white',
+        paddingBottom: 10,
     },
     row: {
         flexDirection: 'row',
