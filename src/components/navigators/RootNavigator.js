@@ -1,7 +1,7 @@
 import React from 'react';
 import { createDrawerNavigator } from 'react-navigation';
 import HomeNavigator from './HomeNavigator';
-import SettingsScreen from '../screens/SettingsScreen';
+import SettingsNavigator from './SettingsNavigator';
 import { Ionicons } from '@expo/vector-icons';
 
 const RootNavigator = createDrawerNavigator(
@@ -13,8 +13,8 @@ const RootNavigator = createDrawerNavigator(
                 drawerIcon: <Ionicons name="ios-home-outline" size={24} color='#FFF' />
             }
         },
-        Settings: {
-            screen: SettingsScreen,
+        SettingsStack: {
+            screen: SettingsNavigator,
             navigationOptions: {
                 drawerLabel: 'Settings',
                 drawerIcon: <Ionicons name="ios-settings-outline" size={24} color='#FFF' />,

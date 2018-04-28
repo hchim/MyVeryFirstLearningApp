@@ -1,7 +1,18 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 
-const CommonStyles = StyleSheet.create({
+export const CommonStyles = StyleSheet.create({
 });
 
-export default CommonStyles;
+/**
+ * The style of stack navigation header.
+ */
+export const NavigationHeaderStyle = {
+    headerStyle: {
+        backgroundColor: '#f4511e',
+    },
+    headerTintColor: '#fff',
+    headerTitleStyle: {
+        fontWeight: 'bold',
+    }
+};

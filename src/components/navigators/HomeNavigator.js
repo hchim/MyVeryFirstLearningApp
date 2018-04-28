@@ -2,6 +2,7 @@ import React from 'react';
 import { createStackNavigator } from 'react-navigation';
 import HomeScreen from '../screens/HomeScreen';
 import SingleScreen from '../screens/SingleScreen';
+import { NavigationHeaderStyle } from '../../common/CommonStyles';
 
 export const HomeNavigator = createStackNavigator(
     {
@@ -14,15 +15,7 @@ export const HomeNavigator = createStackNavigator(
     },
     {
         initialRouteName: 'Home',
-        navigationOptions: {
-            headerStyle: {
-                backgroundColor: '#f4511e',
-            },
-            headerTintColor: '#fff',
-            headerTitleStyle: {
-                fontWeight: 'bold',
-            }
-        }
+        navigationOptions: NavigationHeaderStyle
     }
 );
 

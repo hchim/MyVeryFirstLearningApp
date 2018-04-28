@@ -3,7 +3,7 @@ import { StyleSheet, View, Text } from 'react-native';
 import ResponsiveComponent from '../ResponsiveComponent';
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types';
-import { HeaderBackButton } from 'react-navigation';
+import { HeaderBackButton, NavigationActions } from 'react-navigation';
 
 class SingleScreen extends ResponsiveComponent {
     static navigationOptions = ({navigation}) => {
@@ -11,7 +11,9 @@ class SingleScreen extends ResponsiveComponent {
         return {
             title: title,
             headerLeft: (
-                <HeaderBackButton tintColor='#fff' onPress={() => navigation.dispatch(NavigationActions.back())} />
+                <HeaderBackButton tintColor='#fff'
+                                  onPress={() => navigation.dispatch(NavigationActions.back())}
+                />
             )
         }
     };
