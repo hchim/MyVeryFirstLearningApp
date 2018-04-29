@@ -5,7 +5,21 @@ const Categories = [
         subCats: [
             {
                 name: "Family",
-                icon: require('../../images/icons/People.jpg')
+                icon: require('../../images/icons/People.jpg'),
+                items: [
+                    {
+                        text: "Baby",
+                        image: require('../../images/People/LittleBoy.png')
+                    },
+                    {
+                        text: "Dad",
+                        image: require('../../images/People/LittleBoy.png')
+                    },
+                    {
+                        text: "Mom",
+                        image: require('../../images/People/LittleBoy.png')
+                    }
+                ]
             },
             {
                 name: "Occupation",

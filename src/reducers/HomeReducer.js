@@ -10,7 +10,6 @@ const initialState = {
     modalVisible: false
 };
 
-
 export default (state = initialState, action) => {
     switch (action.type) {
         case SELECT_CATEGORY:

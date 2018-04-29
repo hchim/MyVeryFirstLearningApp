@@ -1,10 +1,12 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types';
+import Swiper from 'react-native-swiper'
 
 import ResponsiveComponent from '../ResponsiveComponent';
 import {createBackHeaderButton} from '../CommonJSX';
+import SingleItemView from '../home/SingleItemView';
 
 class SingleScreen extends ResponsiveComponent {
     static navigationOptions = ({navigation}) => {
@@ -16,10 +18,23 @@ class SingleScreen extends ResponsiveComponent {
     };
 
     render() {
+        const items = this.props.category.items;
+        const styles = createStyle(this.state.orientation);
+        const views = [];
+
+        for (let i = 0; i < items.length; i++) {
+            views.push(
+                <SingleItemView key={i} text={items[i].text} image={items[i].image} style={styles.swiper} />
+            );
+        }
+
         return (
-            <View style={styles.container}>
-                <Text>{this.props.category.name}</Text>
-            </View>
+            <Swiper loop={false}
+                    showsPagination={false}
+                    showsButtons = {false}
+                    index={0}>
+                {views}
+            </Swiper>
         );
     }
 }
@@ -28,12 +43,12 @@ SingleScreen.propTypes = {
     category: PropTypes.object.isRequired
 }
 
-const styles = StyleSheet.create({
-    container: {
+const createStyle = (orientation) => StyleSheet.create({
+    swiper: {
         flex: 1,
-        flexDirection: 'column',
-        backgroundColor: 'white'
-    }
+        backgroundColor: 'white',
+        alignItems: 'center'
+    },
 });
 
 /**************************************************************************
@@ -46,12 +61,6 @@ const mapStateToProps = (state, props) => {
     }
 }
 
-const mapDispatchToProps = dispatch => {
-    return {
-    }
-}
-
 export default connect(
-    mapStateToProps,
-    mapDispatchToProps
+    mapStateToProps
 )(SingleScreen);

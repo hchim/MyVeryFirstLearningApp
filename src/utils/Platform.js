@@ -64,6 +64,14 @@ const getDeviceType = () => {
     return isTablet() ? TABLET : PHONE;
 };
 
+/**
+ * Get screen size
+ * @returns {Object}
+ */
+const getScreenSize = () => {
+    return Dimensions.get('screen');
+};
+
 export default {
     PORTRAIT,
     LANDSCAPE,
@@ -73,4 +81,5 @@ export default {
     isTablet,
     isPhone,
     getDeviceType,
+    getScreenSize
 };
