@@ -11,10 +11,12 @@ export default (state = initialState, action) => {
         case DrawerActions.OPEN_DRAWER:
         case DrawerActions.CLOSE_DRAWER:
         case NavigationActions.NAVIGATE:
-        case NavigationActions.BACK:
+        case NavigationActions.BACK: {
             console.debug('Navigation action: ' + JSON.stringify(action));
             return RootNavigator.router.getStateForAction(action, state);
-        default:
+        }
+        default: {
             return state;
+        }
     }
 };

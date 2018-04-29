@@ -1,8 +1,9 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import ResponsiveComponent from '../ResponsiveComponent';
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types';
+
+import ResponsiveComponent from '../ResponsiveComponent';
 import {createBackHeaderButton} from '../CommonJSX';
 
 class SingleScreen extends ResponsiveComponent {

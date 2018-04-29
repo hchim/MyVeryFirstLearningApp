@@ -3,7 +3,7 @@ import {
     DISMISS_MODAL
 } from '../actions/ActionTypes';
 
-let initialState = {
+const initialState = {
     // The selected sub categories in home screen
     selectedCategories: [],
     // Whether the modal in home screen is visible or not
@@ -18,13 +18,13 @@ export default (state = initialState, action) => {
                 ...state,
                 selectedCategories: action.payload.categories,
                 modalVisible: true
-            }
+            };
         case DISMISS_MODAL:
             return {
                 ...state,
                 modalVisible: false
-            }
+            };
         default:
             return state;
     }
-}
+};
