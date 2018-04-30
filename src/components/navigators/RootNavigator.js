@@ -2,6 +2,7 @@ import React from 'react';
 import { createDrawerNavigator } from 'react-navigation';
 import HomeNavigator from './HomeNavigator';
 import SettingsNavigator from './SettingsNavigator';
+import TestNavigator from './TestNavigator';
 import { Ionicons } from '@expo/vector-icons';
 
 const RootNavigator = createDrawerNavigator(
@@ -11,6 +12,13 @@ const RootNavigator = createDrawerNavigator(
             navigationOptions: {
                 drawerLabel: 'Home',
                 drawerIcon: <Ionicons name="ios-home-outline" size={24} color='#FFF' />
+            }
+        },
+        TestStack: {
+            screen: TestNavigator,
+            navigationOptions: {
+                drawerLabel: 'Test',
+                drawerIcon: <Ionicons name="ios-book-outline" size={24} color='#FFF' />,
             }
         },
         SettingsStack: {

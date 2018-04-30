@@ -10,7 +10,7 @@ import ResponsiveComponent from '../ResponsiveComponent';
  */
 class SingleItemView extends ResponsiveComponent {
     render() {
-        const styles = createStyle(this.state.orientation, this.state.rootViewSize);
+        const styles = createStyle(this.state.orientation, this.state.rootViewSize, this.props.parentItems == 1);
 
         return (
             <View style={styles.container}>
@@ -21,38 +21,47 @@ class SingleItemView extends ResponsiveComponent {
     }
 }
 
+SingleItemView.defaultProps = {
+    text: '',
+    parentItems: 1
+};
+
 SingleItemView.propTypes = {
-    text: PropTypes.string.isRequired,
+    text: PropTypes.string,
     image: PropTypes.number.isRequired,
-}
+    parentItems: PropTypes.oneOf([1, 2]),
+};
 
 /**
  * Create style
  * @param orientation orientation of the device
  * @param size root view size
  */
-const createStyle = (orientation, size) => StyleSheet.create({
+const createStyle = (orientation, size, isSingle) => StyleSheet.create({
     container: {
         flex: 1,
-        flexDirection: orientation == Platform.PORTRAIT ? 'column' : 'row',
-        backgroundColor: 'white',
-        alignItems: 'center'
+        flexDirection: 'column',
+        alignItems: 'center',
+        backgroundColor: 'green',
     },
     image: {
         flex: 1,
-        width: orientation == Platform.PORTRAIT ? size.width : null,
-        height: orientation == Platform.PORTRAIT ? null : size.height,
+        backgroundColor: 'red',
+        width: orientation == Platform.PORTRAIT ? size.width : (isSingle ? size.width : size.width / 2),
+        height: orientation == Platform.PORTRAIT ? (isSingle? size.height : size.height / 2) : size.height,
     },
     text: {
-        marginBottom: orientation == Platform.PORTRAIT ? 40 : 0,
-        marginTop: orientation == Platform.PORTRAIT ? 10 : 0,
-        marginLeft: orientation == Platform.PORTRAIT ? 0 : 10,
-        marginRight: orientation == Platform.PORTRAIT ? 0 : 60,
+        position: 'absolute',
+        bottom: orientation == Platform.PORTRAIT ? 40 : 20,
+        paddingTop: 6,
+        paddingLeft: 10,
+        paddingRight: 10,
         height: 30,
         lineHeight: 24,
         fontSize: 24,
         textAlign: 'center',
         color: '#69e',
+        backgroundColor: 'rgba(255, 255, 255, 0.5)',
     }
 });
 

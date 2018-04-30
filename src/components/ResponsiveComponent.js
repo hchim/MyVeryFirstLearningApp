@@ -16,7 +16,6 @@ class ResponsiveComponent extends React.Component {
 
         // Event Listener for orientation changes
         Dimensions.addEventListener("change", () => {
-
             this.setState({
                 orientation: Platform.getOrientation(),
                 rootViewSize: this._getRootviewSize(),
