@@ -1,4 +1,5 @@
 import { Dimensions } from 'react-native';
+import { Header } from 'react-navigation';
 
 // orientation
 const PORTRAIT = 'portrait';
@@ -72,6 +73,11 @@ const getScreenSize = () => {
     return Dimensions.get('screen');
 };
 
+const getRootViewSize = () => {
+    const dim = getScreenSize();
+    return { width: dim.width, height: dim.height - Header.HEIGHT};
+}
+
 export default {
     PORTRAIT,
     LANDSCAPE,
@@ -81,5 +87,6 @@ export default {
     isTablet,
     isPhone,
     getDeviceType,
-    getScreenSize
+    getScreenSize,
+    getRootViewSize
 };

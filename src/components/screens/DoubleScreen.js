@@ -27,7 +27,6 @@ class DoubleScreen extends ResponsiveComponent {
     render() {
         const items = this.props.items || this.state.items;
         const styles = createStyle(this.state.orientation);
-        console.log("Orientation: " + this.state.orientation);
         const views = [];
         const len = (items.length % 2 == 0) ? items.length : items.length - 1;
 
