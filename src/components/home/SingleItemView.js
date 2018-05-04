@@ -10,7 +10,12 @@ import ResponsiveComponent from '../ResponsiveComponent';
  */
 class SingleItemView extends ResponsiveComponent {
     render() {
-        const styles = createStyle(this.state.orientation, this.state.rootViewSize, this.props.parentItems == 1);
+        const styles = createStyle(
+            this.state.orientation,
+            this.state.rootViewSize,
+            this.props.parentItems == 1,
+            this.props.backgroundColor
+        );
 
         return (
             <View style={styles.container}>
@@ -23,13 +28,15 @@ class SingleItemView extends ResponsiveComponent {
 
 SingleItemView.defaultProps = {
     text: '',
-    parentItems: 1
+    parentItems: 1,
+    backgroundColor: 'white'
 };
 
 SingleItemView.propTypes = {
     text: PropTypes.string,
     image: PropTypes.number.isRequired,
     parentItems: PropTypes.oneOf([1, 2]),
+    backgroundColor: PropTypes.string
 };
 
 /**
@@ -37,16 +44,15 @@ SingleItemView.propTypes = {
  * @param orientation orientation of the device
  * @param size root view size
  */
-const createStyle = (orientation, size, isSingle) => StyleSheet.create({
+const createStyle = (orientation, size, isSingle, backgroundColor) => StyleSheet.create({
     container: {
         flex: 1,
         flexDirection: 'column',
         alignItems: 'center',
-        backgroundColor: 'green',
+        backgroundColor: backgroundColor,
     },
     image: {
         flex: 1,
-        backgroundColor: 'red',
         width: orientation == Platform.PORTRAIT ? size.width : (isSingle ? size.width : size.width / 2),
         height: orientation == Platform.PORTRAIT ? (isSingle? size.height : size.height / 2) : size.height,
     },

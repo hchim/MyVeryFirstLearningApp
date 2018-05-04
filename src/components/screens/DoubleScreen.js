@@ -3,6 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types';
 import Swiper from 'react-native-swiper'
+import randomColor from 'randomcolor';
 
 import ResponsiveComponent from '../ResponsiveComponent';
 import {createDrawerHeaderButton} from '../CommonJSX';
@@ -33,7 +34,9 @@ class DoubleScreen extends ResponsiveComponent {
         for (let i = 0; i < len; i += 2) {
             views.push(
                 <View style={styles.container} key={i}>
-                    <SingleItemView key={1} text={items[i].text} image={items[i].image} parentItems={2} />
+                    <SingleItemView key={1} text={items[i].text} image={items[i].image} parentItems={2}
+                        backgroundColor={randomColor.randomColor({luminosity: 'bright'})}
+                        />
                     <SingleItemView key={2} text={items[i + 1].text} image={items[i + 1].image} parentItems={2} />
                 </View>
             );
@@ -57,7 +60,6 @@ DoubleScreen.propTypes = {
 
 const createStyle = (orientation) => StyleSheet.create({
     swiper: {
-        flex: 1,
         backgroundColor: 'white',
         alignItems: 'center'
     },

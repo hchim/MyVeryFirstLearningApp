@@ -18,6 +18,10 @@ const Categories = [
                     {
                         text: "Mom",
                         image: require('../../images/People/LittleBoy.png')
+                    },
+                    {
+                        text: "GrandPa",
+                        image: require('../../images/People/LittleBoy.png')
                     }
                 ]
             },

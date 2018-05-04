@@ -46,7 +46,6 @@ SingleScreen.propTypes = {
 
 const createStyle = (orientation) => StyleSheet.create({
     swiper: {
-        flex: 1,
         backgroundColor: 'white',
         alignItems: 'center'
     },
